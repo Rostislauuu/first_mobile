@@ -1,5 +1,6 @@
-import 'package:first_app/drawer_content/drawer_content_item.dart';
 import 'package:flutter/material.dart';
+
+import 'package:first_app/drawer_content/drawer_content_item.dart';
 
 class DrawerContent extends StatelessWidget {
   @override
@@ -12,7 +13,9 @@ class DrawerContent extends StatelessWidget {
             child: Text(
               'Navigation',
               style: TextStyle(
-                fontSize: 22,
+                fontFamily: 'Inconsolata',
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
                 color: Colors.white,
               ),
             ),
@@ -30,8 +33,10 @@ class DrawerContent extends StatelessWidget {
                   handleNavigate: () =>
                       Navigator.popAndPushNamed(context, '/feed')),
               DrawerContentItem(
-                listItemText: 'Second List Item',
-                listItemIcon: Icons.edit,
+                listItemText: 'Add User',
+                listItemIcon: Icons.add,
+                handleNavigate: () =>
+                    Navigator.popAndPushNamed(context, '/add_user'),
               ),
               DrawerContentItem(
                 listItemText: 'Third List Item',

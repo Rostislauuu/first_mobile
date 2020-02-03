@@ -4,7 +4,7 @@ class ItemAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-        radius: 15,
+        radius: 20,
         backgroundColor: Colors.white,
         child: Image(
           image: NetworkImage(

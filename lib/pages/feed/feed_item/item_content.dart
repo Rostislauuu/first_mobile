@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ItemContent extends StatelessWidget {
+  final String name;
+  final String direction;
+
+  ItemContent({@required this.name, this.direction});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -10,7 +15,7 @@ class ItemContent extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            'User',
+            name,
             style: TextStyle(
               fontFamily: 'Inconsolata',
               fontWeight: FontWeight.bold,
@@ -19,7 +24,7 @@ class ItemContent extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(top: 10),
             child: Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  ',
+              direction,
               style: TextStyle(
                 fontFamily: 'RobotoCondensed',
                 letterSpacing: 1.5,

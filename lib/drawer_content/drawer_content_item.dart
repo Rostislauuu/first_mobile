@@ -31,6 +31,8 @@ class DrawerContentItem extends StatelessWidget {
             Text(
               listItemText,
               style: TextStyle(
+                fontFamily: 'Inconsolata',
+                fontWeight: FontWeight.bold,
                 fontSize: 20,
                 color: Colors.white,
               ),
