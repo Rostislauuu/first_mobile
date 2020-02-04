@@ -39,7 +39,7 @@ class DrawerContent extends StatelessWidget {
                     Navigator.popAndPushNamed(context, '/add_user'),
               ),
               DrawerContentItem(
-                listItemText: 'Third List Item',
+                listItemText: 'HELLLLO',
                 listItemIcon: Icons.email,
               ),
             ],

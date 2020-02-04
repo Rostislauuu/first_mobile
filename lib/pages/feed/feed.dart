@@ -22,9 +22,10 @@ class _FeedState extends State<Feed> {
       _response = await _dio.get(_usersAPI);
       List<User> finalUsers =
           List<User>.from(_response.data.map((user) => User.fromJson(user)));
+
       return finalUsers;
     } catch (e) {
-      Exception('Couldn`t load users');
+      throw Exception(e);
     }
   }
 
