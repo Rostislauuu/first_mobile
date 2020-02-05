@@ -16,7 +16,12 @@ class ExpandFeedItem extends StatelessWidget {
       tag: heroTag,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(user.fullName),
+          centerTitle: true,
+          title: Text(
+            user.fullName,
+            style: TextStyle(fontFamily: 'Inconsolata'),
+          ),
+          backgroundColor: Colors.blue[800],
         ),
         body: ListView(
           children: <Widget>[

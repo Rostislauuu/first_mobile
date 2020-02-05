@@ -52,7 +52,10 @@ class _FeedState extends State<Feed> {
         elevation: 0,
         centerTitle: true,
         backgroundColor: Colors.blue[800],
-        title: Text('Feed'),
+        title: Text(
+          'Feed',
+          style: TextStyle(fontFamily: 'Inconsolata'),
+        ),
       ),
       body: Center(
         child: Container(

@@ -16,7 +16,7 @@ class FeedItem extends StatelessWidget {
     return Material(
       child: InkWell(
         onTap: () => Navigator.of(context)
-            .push(CupertinoPageRoute(builder: (BuildContext context) {
+            .push(MaterialPageRoute(builder: (BuildContext context) {
           return ExpandFeedItem(
             user: user,
             heroTag: 'hero-item-${user.id}',

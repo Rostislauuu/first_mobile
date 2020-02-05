@@ -17,16 +17,6 @@ class ExpandItemContent extends StatelessWidget {
             Container(
               margin: const EdgeInsets.symmetric(vertical: 10),
               child: Text(
-                user.birthday,
-                style: TextStyle(
-                  fontFamily: 'Courgette',
-                  fontSize: 30,
-                ),
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 10),
-              child: Text(
                 user.direction,
                 style: TextStyle(
                   fontFamily: 'Courgette',
