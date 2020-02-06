@@ -30,17 +30,16 @@ class DrawerContent extends StatelessWidget {
               DrawerContentItem(
                   listItemText: 'Users',
                   listItemIcon: Icons.collections,
-                  handleNavigate: () =>
-                      Navigator.popAndPushNamed(context, '/feed')),
+                  handleNavigate: () => Navigator.popAndPushNamed(context, '/feed')),
               DrawerContentItem(
                 listItemText: 'Add User',
                 listItemIcon: Icons.add,
-                handleNavigate: () =>
-                    Navigator.popAndPushNamed(context, '/add_user'),
+                handleNavigate: () => Navigator.popAndPushNamed(context, '/add_user'),
               ),
               DrawerContentItem(
-                listItemText: 'HELLLLO',
-                listItemIcon: Icons.email,
+                listItemText: 'Charts',
+                listItemIcon: Icons.insert_chart,
+                handleNavigate: () => Navigator.popAndPushNamed(context, '/charts'),
               ),
             ],
           ),

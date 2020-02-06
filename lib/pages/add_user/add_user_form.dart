@@ -57,7 +57,7 @@ class _UserFormState extends State<UserForm> {
                   onPressed: () {
                     if (_addUserKey.currentState.validate()) {
                       _addUserKey.currentState.save();
-                      postFormData('http://test-api-vakoms.herokuapp.com/users/');
+                      postFormData('https://test-api-vakoms.herokuapp.com/users/');
                       _addUserKey.currentState.reset();
 
                       Scaffold.of(context).showSnackBar(
