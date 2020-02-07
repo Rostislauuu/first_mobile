@@ -3,7 +3,6 @@ import 'package:dio/dio.dart';
 
 import 'package:first_app/pages/charts/pie_chart/pie_chart.dart';
 import '../../model/chart/chart_data.dart';
-import 'package:first_app/nav_bar/nav_bar.dart';
 
 class Charts extends StatefulWidget {
   @override
@@ -12,6 +11,7 @@ class Charts extends StatefulWidget {
 
 class _ChartsState extends State<Charts> {
   ChartData chartData;
+  int _selectedIndex = 0;
 
   Future<ChartData> fetchChartData() async {
     String _chartDataAPI = 'https://test-api-vakoms.herokuapp.com/charts/data';
@@ -33,6 +33,12 @@ class _ChartsState extends State<Charts> {
 
     setState(() {
       chartData = fetchedData;
+    });
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
     });
   }
 
@@ -58,19 +64,49 @@ class _ChartsState extends State<Charts> {
           ),
         ),
       ),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            NavBar(),
-            Container(
-              child: chartData != null
-                  ? CustomPieChart(
-                      chartData: chartData,
-                    )
-                  : CircularProgressIndicator(),
+      body: chartData == null
+          ? Center(
+              child: CircularProgressIndicator(
+                backgroundColor: Colors.white,
+              ),
+            )
+          : Center(
+              child: [
+                CustomPieChart(
+                  chartData: chartData,
+                ),
+                // Text('Pie Chart'),
+                Text('Insert Chart'),
+                Text('Show Chart'),
+              ].elementAt(_selectedIndex),
             ),
-          ],
-        ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.pie_chart,
+              size: 35,
+            ),
+            title: Text('Pie Chart'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.insert_chart,
+              size: 35,
+            ),
+            title: Text('Insert Chart'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.show_chart,
+              size: 35,
+            ),
+            title: Text('Show Chart'),
+          )
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.blue[800],
+        onTap: _onItemTapped,
       ),
     );
   }

@@ -12,7 +12,6 @@ convertRGBToNum(list) {
   for (int i = 0; i < dividedRGB.length; i++) {
     for (int j = 0; j < dividedRGB[i].length; j++) {
       int num = int.parse(dividedRGB[i][j]);
-
       convertedRGB.add(num);
     }
   }
