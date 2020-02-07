@@ -31,31 +31,14 @@ class DrawerContentItem extends StatelessWidget {
             Text(
               listItemText,
               style: TextStyle(
+                fontFamily: 'Inconsolata',
+                fontWeight: FontWeight.bold,
                 fontSize: 20,
                 color: Colors.white,
               ),
             )
           ],
         ),
-        // color: Colors.cyan,
-        // child: Row(
-        //   children: <Widget>[
-        //     Container(
-        //       margin: const EdgeInsets.symmetric(horizontal: 10),
-        //       child: Icon(
-        //         listItemIcon,
-        //         color: Colors.white,
-        //       ),
-        //     ),
-        //     Text(
-        //       listItemText,
-        //       style: TextStyle(
-        //         fontSize: 20,
-        //         color: Colors.white,
-        //       ),
-        //     ),
-        //   ],
-        // ),
       ),
     );
   }
