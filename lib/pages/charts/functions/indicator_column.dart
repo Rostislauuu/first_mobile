@@ -7,8 +7,8 @@ import 'convert_num_from_rgb.dart';
 List<Indicator> indicatorColumn(ChartData chartData) {
   final List<Indicator> finalIndicators = [];
 
-  dynamic rgb = convertRGBToNum(chartData.backgroundColor);
-  dynamic convertedToColor = rgb.map((color) => Color.fromRGBO(color[0], color[1], color[2], 1)).toList();
+  List<List<int>> rgb = convertRGBToNum(chartData.backgroundColor);
+  List<Color> convertedToColor = rgb.map((color) => Color.fromRGBO(color[0], color[1], color[2], 1)).toList();
 
   chartData.data.asMap().forEach(
     (index, value) {

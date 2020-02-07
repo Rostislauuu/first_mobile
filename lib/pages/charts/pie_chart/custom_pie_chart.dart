@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import './pie_chart_data.dart';
 import '../../../model/chart/chart_data.dart';
-import 'package:first_app/pages/charts/pie_chart/indicator_column.dart';
+import '../functions/indicator_column.dart';
 
 class CustomPieChart extends StatefulWidget {
   final ChartData chartData;

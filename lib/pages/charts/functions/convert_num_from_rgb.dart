@@ -1,7 +1,7 @@
-convertRGBToNum(list) {
-  dynamic dividedRGB = [];
-  dynamic convertedRGB = [];
-  dynamic formattedRGB = [];
+List<List<int>> convertRGBToNum(List<String> list) {
+  List<List<String>> dividedRGB = [];
+  List<int> convertedRGB = [];
+  List<List<int>> formattedRGB = [];
 
   // Grabbing numbers from Strings
   for (int i = 0; i < list.length; i++) {
@@ -18,7 +18,7 @@ convertRGBToNum(list) {
 
   // Formatting converted data
   for (int i = 0; i < convertedRGB.length; i += 3) {
-    dynamic arr = [convertedRGB[i], convertedRGB[i + 1], convertedRGB[i + 2]];
+    List<int> arr = [convertedRGB[i], convertedRGB[i + 1], convertedRGB[i + 2]];
     formattedRGB.add(arr);
   }
 

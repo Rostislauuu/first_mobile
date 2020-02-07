@@ -39,25 +39,6 @@ class DrawerContentItem extends StatelessWidget {
             )
           ],
         ),
-        // color: Colors.cyan,
-        // child: Row(
-        //   children: <Widget>[
-        //     Container(
-        //       margin: const EdgeInsets.symmetric(horizontal: 10),
-        //       child: Icon(
-        //         listItemIcon,
-        //         color: Colors.white,
-        //       ),
-        //     ),
-        //     Text(
-        //       listItemText,
-        //       style: TextStyle(
-        //         fontSize: 20,
-        //         color: Colors.white,
-        //       ),
-        //     ),
-        //   ],
-        // ),
       ),
     );
   }

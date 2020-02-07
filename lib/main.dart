@@ -4,8 +4,7 @@ import 'package:sentry/sentry.dart';
 
 import './my_app.dart';
 
-final sentry = SentryClient(
-    dsn: "https://25be4c8b1f544f00b86a0dece4d85662@sentry.io/2211943");
+final sentry = SentryClient(dsn: "https://25be4c8b1f544f00b86a0dece4d85662@sentry.io/2211943");
 
 bool get isInDebugMode {
   bool inDebugMode = false;

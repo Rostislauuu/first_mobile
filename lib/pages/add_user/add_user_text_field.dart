@@ -26,7 +26,7 @@ class UserTextField extends StatelessWidget {
           filled: true,
           fillColor: Colors.white,
         ),
-        onSaved: (value) => handleSaveField(fieldName, value),
+        onSaved: (String value) => handleSaveField(fieldName, value),
         validator: (String fieldName) => fieldName.isEmpty ? 'Empty field' : null,
       ),
     );

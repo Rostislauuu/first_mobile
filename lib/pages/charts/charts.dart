@@ -1,7 +1,8 @@
+import 'package:first_app/pages/charts/bar_chart/custom_bar_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
-import 'package:first_app/pages/charts/pie_chart/pie_chart.dart';
+import 'package:first_app/pages/charts/pie_chart/custom_pie_chart.dart';
 import '../../model/chart/chart_data.dart';
 
 class Charts extends StatefulWidget {
@@ -75,9 +76,9 @@ class _ChartsState extends State<Charts> {
                 CustomPieChart(
                   chartData: chartData,
                 ),
-                // Text('Pie Chart'),
-                Text('Insert Chart'),
-                Text('Show Chart'),
+                CustomBarChart(
+                  chartData: chartData,
+                )
               ].elementAt(_selectedIndex),
             ),
       bottomNavigationBar: BottomNavigationBar(
@@ -85,28 +86,20 @@ class _ChartsState extends State<Charts> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.pie_chart,
-              size: 35,
             ),
             title: Text('Pie Chart'),
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.insert_chart,
-              size: 35,
             ),
-            title: Text('Insert Chart'),
+            title: Text('Bar Chart'),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.show_chart,
-              size: 35,
-            ),
-            title: Text('Show Chart'),
-          )
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue[800],
         onTap: _onItemTapped,
+        iconSize: 35,
       ),
     );
   }

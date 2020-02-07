@@ -8,26 +8,6 @@ class AddUser extends StatefulWidget {
 }
 
 class _AddUserState extends State<AddUser> {
-  // final _addUserKey = GlobalKey<FormState>();
-  // final Map<String, dynamic> formData = {
-  //   'fullName': null,
-  //   'direction': null,
-  //   'subdirection': null,
-  // };
-
-  // void handleSaveField(String fieldName, String value) {
-  //   setState(() {
-  //     formData[fieldName] = value;
-  //   });
-  // }
-
-  // void postFormData(String url) {
-  //   Response _response;
-  //   Dio _dio = new Dio();
-
-  //   _dio.post(url, data: formData);
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
