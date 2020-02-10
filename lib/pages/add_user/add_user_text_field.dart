@@ -3,13 +3,21 @@ import 'package:flutter/material.dart';
 class UserTextField extends StatelessWidget {
   final String fieldName;
   final Function handleSaveField;
+  final Function handleValidate;
+  final TextInputType keyboardType;
+  final FocusNode _phoneFocus = FocusNode();
 
-  UserTextField({@required this.fieldName, this.handleSaveField});
+  UserTextField({
+    @required this.fieldName,
+    @required this.handleSaveField,
+    @required this.handleValidate,
+    @required this.keyboardType,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.only(top: 15),
       width: MediaQuery.of(context).size.width * 0.5,
       child: TextFormField(
         textCapitalization: TextCapitalization.sentences,
@@ -27,7 +35,14 @@ class UserTextField extends StatelessWidget {
           fillColor: Colors.white,
         ),
         onSaved: (String value) => handleSaveField(fieldName, value),
-        validator: (String fieldName) => fieldName.isEmpty ? 'Empty field' : null,
+        validator: handleValidate,
+        keyboardType: keyboardType,
+        textInputAction: TextInputAction.done,
+        onFieldSubmitted: (String value) {
+          if (fieldName == 'phone') {
+            _phoneFocus.unfocus();
+          }
+        },
       ),
     );
   }

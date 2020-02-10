@@ -4,7 +4,7 @@ class ItemContent extends StatelessWidget {
   final String name;
   final String direction;
 
-  ItemContent({@required this.name, this.direction});
+  ItemContent({@required this.name, @required this.direction});
 
   @override
   Widget build(BuildContext context) {

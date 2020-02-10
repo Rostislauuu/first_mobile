@@ -8,7 +8,7 @@ class DrawerContentItem extends StatelessWidget {
   DrawerContentItem({
     @required this.listItemText,
     @required this.listItemIcon,
-    this.handleNavigate,
+    @required this.handleNavigate,
   });
 
   @override
