@@ -20,8 +20,7 @@ class _FeedState extends State<Feed> {
 
     try {
       _response = await _dio.get(_usersAPI);
-      List<User> finalUsers =
-          List<User>.from(_response.data.map((user) => User.fromJson(user)));
+      List<User> finalUsers = List<User>.from(_response.data.map((user) => User.fromJson(user)));
 
       return finalUsers;
     } catch (e) {
@@ -35,6 +34,17 @@ class _FeedState extends State<Feed> {
     setState(() {
       usersData = response;
     });
+  }
+
+  void handleDeleteUser(String id) {
+    final String _userToDelete = 'https://test-api-vakoms.herokuapp.com/users/$id';
+    Dio _dio = Dio();
+
+    try {
+      _dio.delete(_userToDelete);
+    } catch (e) {
+      throw Exception(e);
+    }
   }
 
   @override
@@ -66,7 +76,19 @@ class _FeedState extends State<Feed> {
                   physics: BouncingScrollPhysics(),
                   itemCount: usersData.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return new FeedItem(user: usersData[index]);
+                    return Dismissible(
+                      background: Card(color: Colors.red),
+                      key: Key(usersData[index].id),
+                      onDismissed: (direction) {
+                        handleDeleteUser(usersData[index].id);
+                        Scaffold.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text("${usersData[index].fullName} deleted"),
+                          ),
+                        );
+                      },
+                      child: new FeedItem(user: usersData[index]),
+                    );
                   },
                 )
               : Loading(),
