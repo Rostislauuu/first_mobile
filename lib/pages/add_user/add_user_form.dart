@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
-import './add_user_text_field.dart';
 import './validators.dart';
 import './generate_subdirections.dart';
 
@@ -21,10 +20,15 @@ class _UserFormState extends State<UserForm> {
     'phone': null
   };
 
-  final phoneKeyboardType = TextInputType.phone;
-  final emailKeyboardType = TextInputType.emailAddress;
-  final textKeyboardType = TextInputType.text;
-  final birthdayKeyboardType = TextInputType.datetime;
+  final FocusNode _fullNameFocus = FocusNode();
+  final FocusNode _birthdayFocus = FocusNode();
+  final FocusNode _emailFocus = FocusNode();
+  final FocusNode _phoneFocus = FocusNode();
+
+  _fieldFocusChange(BuildContext context, FocusNode currentFocus, FocusNode nextFocus) {
+    currentFocus.unfocus();
+    FocusScope.of(context).requestFocus(nextFocus);
+  }
 
   void handleSaveField(String fieldName, String value) {
     setState(() {
@@ -51,17 +55,61 @@ class _UserFormState extends State<UserForm> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                UserTextField(
-                  fieldName: 'fullName',
-                  handleSaveField: handleSaveField,
-                  handleValidate: validateTextField,
-                  keyboardType: textKeyboardType,
+                Container(
+                  margin: const EdgeInsets.only(top: 15),
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  child: TextFormField(
+                    textCapitalization: TextCapitalization.sentences,
+                    style: TextStyle(fontSize: 15),
+                    decoration: InputDecoration(
+                      errorStyle: TextStyle(fontSize: 15),
+                      hintText: 'Enter Full Name',
+                      hintStyle: TextStyle(
+                        color: Colors.grey[700],
+                        fontSize: 15,
+                      ),
+                      contentPadding: const EdgeInsets.all(10),
+                      border: InputBorder.none,
+                      filled: true,
+                      fillColor: Colors.white,
+                    ),
+                    onSaved: (String value) => handleSaveField('fullName', value),
+                    validator: validateTextField,
+                    focusNode: _fullNameFocus,
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.next,
+                    onFieldSubmitted: (term) {
+                      _fieldFocusChange(context, _fullNameFocus, _birthdayFocus);
+                    },
+                  ),
                 ),
-                UserTextField(
-                  fieldName: 'birthday',
-                  handleSaveField: handleSaveField,
-                  handleValidate: validateTextField,
-                  keyboardType: birthdayKeyboardType,
+                Container(
+                  margin: const EdgeInsets.only(top: 15),
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  child: TextFormField(
+                    textCapitalization: TextCapitalization.sentences,
+                    style: TextStyle(fontSize: 15),
+                    decoration: InputDecoration(
+                      errorStyle: TextStyle(fontSize: 15),
+                      hintText: 'Enter Birthday Date',
+                      hintStyle: TextStyle(
+                        color: Colors.grey[700],
+                        fontSize: 15,
+                      ),
+                      contentPadding: const EdgeInsets.all(10),
+                      border: InputBorder.none,
+                      filled: true,
+                      fillColor: Colors.white,
+                    ),
+                    onSaved: (String value) => handleSaveField('birthday', value),
+                    validator: validateTextField,
+                    focusNode: _birthdayFocus,
+                    keyboardType: TextInputType.datetime,
+                    textInputAction: TextInputAction.next,
+                    onFieldSubmitted: (term) {
+                      _fieldFocusChange(context, _birthdayFocus, _emailFocus);
+                    },
+                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 15),
@@ -110,17 +158,61 @@ class _UserFormState extends State<UserForm> {
                     items: handleGenerateSubdirections(formData['direction']),
                   ),
                 ),
-                UserTextField(
-                  fieldName: 'email',
-                  handleSaveField: handleSaveField,
-                  handleValidate: validateEmailField,
-                  keyboardType: emailKeyboardType,
+                Container(
+                  margin: const EdgeInsets.only(top: 15),
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  child: TextFormField(
+                    textCapitalization: TextCapitalization.sentences,
+                    style: TextStyle(fontSize: 15),
+                    decoration: InputDecoration(
+                      errorStyle: TextStyle(fontSize: 15),
+                      hintText: 'Enter Email',
+                      hintStyle: TextStyle(
+                        color: Colors.grey[700],
+                        fontSize: 15,
+                      ),
+                      contentPadding: const EdgeInsets.all(10),
+                      border: InputBorder.none,
+                      filled: true,
+                      fillColor: Colors.white,
+                    ),
+                    onSaved: (String value) => handleSaveField('email', value),
+                    validator: validateEmailField,
+                    focusNode: _emailFocus,
+                    keyboardType: TextInputType.emailAddress,
+                    textInputAction: TextInputAction.next,
+                    onFieldSubmitted: (term) {
+                      _fieldFocusChange(context, _emailFocus, _phoneFocus);
+                    },
+                  ),
                 ),
-                UserTextField(
-                  fieldName: 'phone',
-                  handleSaveField: handleSaveField,
-                  handleValidate: validatePhoneField,
-                  keyboardType: phoneKeyboardType,
+                Container(
+                  margin: const EdgeInsets.only(top: 15),
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  child: TextFormField(
+                    textCapitalization: TextCapitalization.sentences,
+                    style: TextStyle(fontSize: 15),
+                    decoration: InputDecoration(
+                      errorStyle: TextStyle(fontSize: 15),
+                      hintText: 'Enter Phone Number',
+                      hintStyle: TextStyle(
+                        color: Colors.grey[700],
+                        fontSize: 15,
+                      ),
+                      contentPadding: const EdgeInsets.all(10),
+                      border: InputBorder.none,
+                      filled: true,
+                      fillColor: Colors.white,
+                    ),
+                    onSaved: (String value) => handleSaveField('phone', value),
+                    validator: validatePhoneField,
+                    focusNode: _phoneFocus,
+                    keyboardType: TextInputType.number,
+                    textInputAction: TextInputAction.done,
+                    onFieldSubmitted: (String value) {
+                      _phoneFocus.unfocus();
+                    },
+                  ),
                 ),
                 Container(
                   width: 120,
