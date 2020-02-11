@@ -6,7 +6,7 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawerEdgeDragWidth: 70,
+      drawerEdgeDragWidth: 270,
       drawer: Drawer(
         child: DrawerContent(),
       ),
