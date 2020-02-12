@@ -1,8 +1,8 @@
-import 'package:first_app/pages/charts/bar_chart/custom_bar_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
 import 'package:first_app/pages/charts/pie_chart/custom_pie_chart.dart';
+import 'package:first_app/pages/charts/bar_chart/custom_bar_chart.dart';
 import '../../model/chart/chart_data.dart';
 
 class Charts extends StatefulWidget {

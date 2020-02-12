@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'package:first_app/drawer_content/drawer_content_item.dart';
+import 'package:first_app/pages/add_user/add_user.dart';
+import 'package:first_app/pages/charts/charts.dart';
+import 'package:first_app/pages/feed/feed.dart';
 
 class DrawerContent extends StatelessWidget {
   @override
@@ -28,18 +32,40 @@ class DrawerContent extends StatelessWidget {
           child: Column(
             children: <Widget>[
               DrawerContentItem(
-                  listItemText: 'Users',
-                  listItemIcon: Icons.collections,
-                  handleNavigate: () => Navigator.popAndPushNamed(context, '/feed')),
+                listItemText: 'Users',
+                listItemIcon: Icons.collections,
+                handleNavigate: () {
+                  Navigator.pop(context);
+                  Navigator.of(context).push(
+                    CupertinoPageRoute(builder: (context) {
+                      return Feed();
+                    }),
+                  );
+                },
+              ),
               DrawerContentItem(
                 listItemText: 'Add User',
-                listItemIcon: Icons.add,
-                handleNavigate: () => Navigator.popAndPushNamed(context, '/add_user'),
+                listItemIcon: CupertinoIcons.person_add_solid,
+                handleNavigate: () {
+                  Navigator.pop(context);
+                  Navigator.of(context).push(
+                    CupertinoPageRoute(builder: (context) {
+                      return AddUser();
+                    }),
+                  );
+                },
               ),
               DrawerContentItem(
                 listItemText: 'Charts',
                 listItemIcon: Icons.insert_chart,
-                handleNavigate: () => Navigator.popAndPushNamed(context, '/charts'),
+                handleNavigate: () {
+                  Navigator.pop(context);
+                  Navigator.of(context).push(
+                    CupertinoPageRoute(builder: (context) {
+                      return Charts();
+                    }),
+                  );
+                },
               ),
             ],
           ),

@@ -15,7 +15,7 @@ class FeedItem extends StatelessWidget {
     return Material(
       child: InkWell(
         onTap: () => Navigator.of(context).push(
-          MaterialPageRoute(
+          CupertinoPageRoute(
             builder: (BuildContext context) {
               return ExpandFeedItem(
                 user: user,
