@@ -47,7 +47,7 @@ class _UserFormState extends State<UserForm> {
   }
 
   String formatBirthdayDate(String primalDate) {
-    return primalDate.split(' ')[0];
+    return primalDate.split(' ')[0]; //returning date without time(HH:MM:SS)
   }
 
   @override
@@ -229,7 +229,7 @@ class _UserFormState extends State<UserForm> {
                     color: Colors.blue[700],
                     onPressed: () {
                       // form and birthday field validate separately
-                      if (_addUserKey.currentState.validate() && formData['birthday'] != '') {
+                      if (_addUserKey.currentState.validate() && !formData['birthday'].isEmpty) {
                         _addUserKey.currentState.save();
                         postFormData();
                         _addUserKey.currentState.reset();
@@ -242,7 +242,7 @@ class _UserFormState extends State<UserForm> {
                             content: Text('${formData['fullName']} successfuly added'),
                           ),
                         );
-                      } else if (formData['birthday'] != '') {
+                      } else if (!formData['birthday'].isEmpty) {
                         //just checking birthday field
                         setState(() {
                           isBirthdayError = false;
